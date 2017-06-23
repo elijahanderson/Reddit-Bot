@@ -8,9 +8,9 @@ def bot_login() :
     print('Logging in...')
     reddit = praw.Reddit(client_id='gZGNheQ3FFswZQ',
                          client_secret='whHLVVFyZJ3VJ5K7joNmCTHuVd4',
-                         password='elephantsanddonkeysgrowbigears',
-                         user_agent = 'yeah_bot_test v0.1',
-                         username = 'yeah_bot_test')
+                         password='a147258b',
+                         user_agent='yeah_bot_test v0.1',
+                         username='moldyxorange')
     print(reddit.user.me())
     return reddit
 
