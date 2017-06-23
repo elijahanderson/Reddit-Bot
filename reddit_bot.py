@@ -11,7 +11,7 @@ def bot_login() :
                          password='a147258b',
                          user_agent='yeah_bot_test v0.1',
                          username='moldyxorange')
-    print(reddit.user.me())
+    print('Logged in as ' + str(reddit.user.me()))
     return reddit
 
 
