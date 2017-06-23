@@ -17,7 +17,7 @@ def bot_login() :
 
 def run_bot(reddit) :
 
-    # Loop through the top 25 comments in all posts certain subreddit
+    # Loop through the top 25 comments in all posts on a certain subreddit
     for comment in reddit.subreddit('test').comments(limit=25) :
 
         #check if keyword '!showyeahs' is in any of those comments
