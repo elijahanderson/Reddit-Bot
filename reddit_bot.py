@@ -33,12 +33,16 @@ def run_bot(reddit, comments_replied_to) :
 
             #reply via comment
 
-            print('Replied to ' + comment.id)
-
             comment.reply('String found!! [Yeah!](https://byyeah.com/assets/img/product/outofstock.jpg)')
+            print('Replied to ' + comment.id)
 
             # Add comment ID to replied to list
             comments_replied_to.append(comment.id)
+
+            # Sleep for ten seconds
+
+            print('Sleeping for 10 seconds...')
+            time.sleep(10)
 
     # Sleep for ten seconds
 
