@@ -1,5 +1,15 @@
+# YeahBot - if a user comments '!showyeahs', this bot loops through their comment history and returns the number
+# of times they've recently said 'yeah'
+#
+# By Eli Anderson
+#
+# Last edited June 26, 2017
+#
+
+
 # praw is a tool that makes interacting with reddit much easier.
 #
+
 
 import praw
 
@@ -31,9 +41,24 @@ def run_bot(reddit, comments_replied_to) :
 
             print('String with \'!showyeahs\' found!!')
 
+            # Go through user's recent comment history, record number of times 'yeah' is said
+            #
+            # Loop through the comments
+
+            # Start yeah_count at -1, because the bot shouldn't count the user's original '!showyeahs' statement
+            yeah_count = -1
+
+            for comment_hist in reddit.redditor('moldyxorange').comments.new(limit=None) :
+
+                # Find where they say 'yeah'
+
+                if 'yeah' in comment_hist.body or 'Yeah' in comment_hist.body:
+                    yeah_count += 1
+
             # reply via comment
 
-            comment.reply('String found!! [Yeah!](https://byyeah.com/assets/img/product/outofstock.jpg)')
+            comment.reply('You have said the word \'yeah\' ' + str(yeah_count) + ' times in your recent history.\n\n '
+                                                                            '[Yeah!](https://byyeah.com/assets/img/product/outofstock.jpg)')
             print('Replied to ' + comment.id)
 
             # Add comment ID to replied to list
