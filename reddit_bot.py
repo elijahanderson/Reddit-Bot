@@ -3,7 +3,7 @@
 #
 # By Eli Anderson
 #
-# Last edited June 26, 2017
+# Last edited June 27, 2017
 #
 
 
@@ -31,9 +31,9 @@ def authenticate() :
 
 def run_bot(reddit, comments_replied_to) :
 
-    # Loop through the top 25 comments in all posts on a certain subreddit
+    # Loop through the top 100 comments in all recent posts on a certain subreddit
 
-    for comment in reddit.subreddit('test').comments(limit=25) :
+    for comment in reddit.subreddit('test').comments(limit=100) :
 
         # check if keyword '!showyeahs' is in any of those comments and comment has already been replied to
 
@@ -41,14 +41,17 @@ def run_bot(reddit, comments_replied_to) :
 
             print('String with \'!showyeahs\' found!!')
 
-            # Go through user's recent comment history, record number of times 'yeah' is said
-            #
-            # Loop through the comments
+            # Fetch username of author of the comment to be replied to
+            username = comment.author.name
 
             # Start yeah_count at -1, because the bot shouldn't count the user's original '!showyeahs' statement
             yeah_count = -1
 
-            for comment_hist in reddit.redditor('moldyxorange').comments.new(limit=None) :
+            # Go through user's recent comment history, record number of times 'yeah' is said
+            #
+            # Loop through the comments
+
+            for comment_hist in reddit.redditor(username).comments.new(limit=None) :
 
                 # Find where they say 'yeah'
 
@@ -77,7 +80,7 @@ def run_bot(reddit, comments_replied_to) :
 # Save the comments that have been replied to in the past so the bot doesn't reply to same comments the after each time
 # it is run
 #
-# Uses .txt file to store the comments
+# Uses .txt file to store the comment IDs
 
 
 def get_saved_comments() :
