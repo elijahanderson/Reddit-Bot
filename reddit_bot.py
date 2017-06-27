@@ -33,7 +33,7 @@ def run_bot(reddit, comments_replied_to) :
 
     # Loop through the top 100 comments in all recent posts on a certain subreddit
 
-    for comment in reddit.subreddit('test').comments(limit=100) :
+    for comment in reddit.subreddit('Python').comments(limit=100) :
 
         # check if keyword '!showyeahs' is in any of those comments and comment has already been replied to
 
@@ -60,7 +60,7 @@ def run_bot(reddit, comments_replied_to) :
 
             # reply via comment
 
-            comment.reply('You have said the word \'yeah\' ' + str(yeah_count) + ' times in your recent history.\n\n '
+            comment.reply('You have said the word \'yeah\' ' + str(yeah_count) + ' times in your commenting history.\n\n '
                                                                             '[Yeah!](https://byyeah.com/assets/img/product/outofstock.jpg)')
             print('Replied to ' + comment.id)
 
